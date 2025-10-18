@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Undangan Walimahan - AM STORE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f5ff 0%, #f0edff 100%);
+            color: #4a2c7a;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .floating-icons i {
+            position: absolute;
+            color: rgba(74, 44, 122, 0.1);
+            font-size: 2rem;
+            z-index: 0;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(74, 44, 122, 0.2);
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #6a3093, #a044ff);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        .header h1 {
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-weight: bold;
+            color: #6a3093;
+            font-size: 1.2rem;
+        }
+        
+        .form-container {
+            padding: 30px 40px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            background: linear-gradient(to right, #6a3093, #a044ff);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 15px rgba(106, 48, 147, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #4a2c7a;
+            font-size: 1.05rem;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e5daf2;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            background: #faf8ff;
+            transition: all 0.3s ease;
+            color: #4a2c7a;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #6a3093;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(106, 48, 147, 0.1);
+        }
+        
+        .input-field::placeholder {
+            color: #a99bc1;
+        }
+        
+        textarea.input-field {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(to right, #6a3093, #a044ff);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 6px 20px rgba(106, 48, 147, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(106, 48, 147, 0.5);
+        }
+        
+        .submit-btn i {
+            margin-right: 10px;
+        }
+        
+        .form-footer {
+            text-align: center;
+            padding-top: 25px;
+            color: #7a6a9a;
+            font-size: 0.95rem;
+            border-top: 1px solid #f0ebfa;
+            margin-top: 20px;
+            font-style: italic;
+        }
+        
+        .whatsapp-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #6a3093;
+        }
+        
+        .whatsapp-info i {
+            color: #25D366;
+            font-size: 1.3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .logo {
+                top: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Animasi konfirmasi */
+        .confirmation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .confirmation.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .confirmation-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+        
+        .confirmation.active .confirmation-content {
+            transform: translateY(0);
+        }
+        
+        .confirmation h2 {
+            color: #6a3093;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .confirmation p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .confirmation-btn {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .confirmation-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(37, 211, 102, 0.5);
+        }
+        
+        .walimahan-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-weight: bold;
+            color: #6a3093;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Dekorasi floating icons -->
+    <div class="floating-icons">
+        <i class="fas fa-star" style="top: 10%; left: 5%; animation-delay: 0s;"></i>
+        <i class="fas fa-gift" style="top: 20%; right: 7%; animation-delay: 1s;"></i>
+        <i class="fas fa-glass-cheers" style="bottom: 15%; left: 8%; animation-delay: 2s;"></i>
+        <i class="fas fa-calendar-alt" style="bottom: 25%; right: 10%; animation-delay: 3s;"></i>
+        <i class="fas fa-heart" style="top: 30%; left: 15%; animation-delay: 4s;"></i>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo">AM</div>
+            <div class="walimahan-icon">
+                <i class="fas fa-glass-cheers"></i>
+            </div>
+            <h1>FORMULIR UNDANGAN WALIMAHAN</h1>
+            <p>AM STORE - Melayani Pembuatan Undangan Walimahan Berkualitas</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="walimahanForm">
+                <div class="section">
+                    <div class="section-title">
+                        <i class="fas fa-envelope"></i>
+                        <span>DETAIL UNDANGAN</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="jenisUndangan">Jenis Undangan</label>
+                        <input type="text" id="jenisUndangan" class="input-field" placeholder="Contoh: Pernikahan, Khitanan, dll">
+                    </div>
+                    
+                    <div class="form-row" style="display: flex; gap: 20px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="hari">Hari</label>
+                            <input type="text" id="hari" class="input-field" placeholder="Contoh: Sabtu">
+                        </div>
+                        
+                        <div class="form-group" style="flex: 1;">
+                            <label for="tanggal">Tanggal</label>
+                            <input type="text" id="tanggal" class="input-field" placeholder="DD/MM/YYYY">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row" style="display: flex; gap: 20px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="waktu">Waktu</label>
+                            <input type="text" id="waktu" class="input-field" placeholder="Contoh: 08.00 - 10.00 WIB">
+                        </div>
+                        
+                        <div class="form-group" style="flex: 1;">
+                            <label for="tempat">Tempat</label>
+                            <input type="text" id="tempat" class="input-field" placeholder="Lokasi acara">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="isiAcara">Isi Acara</label>
+                        <textarea id="isiAcara" class="input-field" placeholder="Deskripsi acara"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hormatKami">Hormat Kami</label>
+                        <input type="text" id="hormatKami" class="input-field" placeholder="Nama keluarga/organisasi">
+                    </div>
+                    
+                    <div class="form-row" style="display: flex; gap: 20px;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="jumlahPesanan">Jumlah Pesanan</label>
+                            <input type="text" id="jumlahPesanan" class="input-field" placeholder="Contoh: 100 undangan">
+                        </div>
+                        
+                        <div class="form-group" style="flex: 1;">
+                            <label for="noHp">No. HP</label>
+                            <input type="text" id="noHp" class="input-field" placeholder="Nomor WhatsApp" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="catatan">Catatan</label>
+                        <textarea id="catatan" class="input-field" placeholder="Catatan tambahan"></textarea>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fab fa-whatsapp"></i> Kirim via WhatsApp
+                </button>
+                
+                <div class="form-footer">
+                    <p>Terima kasih telah mempercayakan pembuatan undangan walimahan Anda kepada AM STORE</p>
+                    <div class="whatsapp-info">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>Data akan dikirim ke: 082329152966</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Konfirmasi pengiriman -->
+    <div class="confirmation" id="confirmation">
+        <div class="confirmation-content">
+            <h2>Formulir Terkirim! <i class="fas fa-check-circle"></i></h2>
+            <p>Data pendaftaran undangan walimahan Anda telah berhasil dikirim ke AM Store melalui WhatsApp.</p>
+            <p>Tim kami akan segera menghubungi Anda untuk konfirmasi dan proses selanjutnya.</p>
+            <button class="confirmation-btn" onclick="closeConfirmation()">
+                <i class="fas fa-times"></i> Tutup
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk menampilkan konfirmasi
+        function showConfirmation() {
+            document.getElementById('confirmation').classList.add('active');
+        }
+        
+        // Fungsi untuk menutup konfirmasi
+        function closeConfirmation() {
+            document.getElementById('confirmation').classList.remove('active');
+        }
+        
+        // Fungsi untuk mengirim form ke WhatsApp
+        function sendToWhatsApp() {
+            // Mengumpulkan data dari form
+            const data = {
+                jenisUndangan: document.getElementById('jenisUndangan').value,
+                hari: document.getElementById('hari').value,
+                tanggal: document.getElementById('tanggal').value,
+                waktu: document.getElementById('waktu').value,
+                isiAcara: document.getElementById('isiAcara').value,
+                tempat: document.getElementById('tempat').value,
+                hormatKami: document.getElementById('hormatKami').value,
+                jumlahPesanan: document.getElementById('jumlahPesanan').value,
+                noHp: document.getElementById('noHp').value,
+                catatan: document.getElementById('catatan').value
+            };
+            
+            // Membuat pesan untuk WhatsApp
+            let message = `*FORMULIR PEMESANAN UNDANGAN WALIMAHAN - AM STORE*%0A%0A`;
+            
+            message += `*Jenis Undangan*%0A${data.jenisUndangan}%0A%0A`;
+            
+            message += `*Detail Acara*%0A`;
+            message += `Hari: ${data.hari}%0A`;
+            message += `Tanggal: ${data.tanggal}%0A`;
+            message += `Waktu: ${data.waktu}%0A`;
+            message += `Tempat: ${data.tempat}%0A%0A`;
+            
+            message += `*Isi Acara*%0A${data.isiAcara}%0A%0A`;
+            
+            message += `*Hormat Kami*%0A${data.hormatKami}%0A%0A`;
+            
+            message += `*Jumlah Pesanan*%0A${data.jumlahPesanan}%0A%0A`;
+            
+            message += `*No. HP*%0A${data.noHp}%0A%0A`;
+            
+            message += `*Catatan*%0A${data.catatan}%0A%0A`;
+            
+            message += `_Formulir ini dikirim melalui website AM Store_`;
+            
+            // Membuka WhatsApp dengan pesan yang sudah diformat
+            window.open(`https://wa.me/6282329152966?text=${message}`, '_blank');
+            
+            // Menampilkan konfirmasi
+            showConfirmation();
+        }
+        
+        // Event listener untuk form submission
+        document.getElementById('walimahanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validasi nomor HP
+            const noHp = document.getElementById('noHp').value;
+            if (!noHp) {
+                alert('Mohon isi nomor HP terlebih dahulu');
+                return;
+            }
+            
+            // Kirim ke WhatsApp
+            sendToWhatsApp();
+        });
+        
+        // Menambahkan floating icons secara dinamis
+        function createFloatingIcons() {
+            const container = document.querySelector('.floating-icons');
+            const icons = ['fa-star', 'fa-gift', 'fa-glass-cheers', 'fa-calendar-alt', 'fa-heart'];
+            
+            for (let i = 0; i < 15; i++) {
+                const icon = document.createElement('i');
+                const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+                icon.classList.add('fas', randomIcon);
+                
+                // Posisi acak
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const size = 1 + Math.random() * 2;
+                
+                icon.style.top = `${top}%`;
+                icon.style.left = `${left}%`;
+                icon.style.animationDelay = `${delay}s`;
+                icon.style.fontSize = `${size}rem`;
+                
+                container.appendChild(icon);
+            }
+        }
+        
+        // Panggil fungsi untuk membuat icons
+        createFloatingIcons();
+    </script>
+</body>
+</html>
